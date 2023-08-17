@@ -6,7 +6,7 @@
 {% block content %}
 <ul class="nav nav-pills sticky-top bg-white nav-fill">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="{% url 'main.page' %}">
+    <a class="nav-link active" aria-current="page" href="{% url 'main-page' %}">
       <span style="font-weight: bold;">Главная</span>
     </a>
   </li>
@@ -92,35 +92,36 @@
       </div>
     </form>
   </div>
-  {% for adv in advertisements %} 
-  <div class="col">   
+  <div class="col">
+    {% for adv in advertisements %}
     <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
       <div class="row g-0">
         <div class="col-md-4">
           <a href="advertisement.html" class="nav-link">
-            <img src="{% static 'img/image.png' %}" class="img-fluid rounded-start" alt="Card title">
+            <img src="{% if adv.image %} {{adv.image.url}} {% endif %}" class="img-fluid rounded-start" alt="Card title">
           </a>
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">
-              <a href="advertisement.html" class="nav-link"><strong>{{ adv.title }}</strong></a>
+              <a href="advertisement.html" class="nav-link"><strong>{{adv.title}}</strong></a>
             </h5>
             <a href="advertisement.html" class="nav-link">
               <p class="card-text">
-                {{ adv.description }}
+                {{adv.description}}
               </p>
-              <span>Автор: {{ adv.user }}</span>
-              <p class="card-text"><small class="text-muted">Размещено: {{ adv.created_at }}</small></p>
-              <span>Цена: {{ adv.price }}</span>
+              <span>Автор: {{adv.user}}</span>
+              <p class="card-text"><small class="text-muted">Размещено: {{adv.created_at}}</small></p>
+              <span>Цена: {{adv.price}}</span>
             </a>
           </div>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
+
 </div>
-{% endfor %}
 <footer style="padding: 100px;" class="bg-primary">
   <nav class="navbar navbar-expand-sm navbar-dark">
     <a class="navbar-brand" href="#">Добавьте</a>
