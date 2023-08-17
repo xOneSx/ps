@@ -4,12 +4,12 @@ from .models import Advertisement
 # Register your models here.
 
 class AdvAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description', 'price', 'cr_date', 'auction']
-    list_filter = ['auction', 'created_at']
+    list_display = ['id', 'title', 'description', 'price', 'cr_date', 'auction', 'up_date', 'image']
+    list_filter = ['auction', 'created_at',]
     actions = ['make_auction_as_false', 'make_auction_as_true']
     fieldsets = (
         ('Общее', {
-            'fields': ('title', 'description'),
+            'fields': ('title', 'description', 'image'),
             'classes': ['collapse']
         }),
 
