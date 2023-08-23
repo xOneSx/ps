@@ -3,13 +3,13 @@ from .models import Advertisement
 
 # Register your models here.
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display = [ 'id', 'title', 'description', 'price', 'created_date', 'negotiable', 'updated_date', 'image', 'user' ]
+    list_display = [ 'id', 'title', 'description', 'price', 'created_date', 'negotiable', 'updated_date', 'get_html_image', 'user' ]
     list_filter = [ 'negotiable', 'created_at' ]
     actions = [ 'make_negotiable_as_false', 'make_negotiable_as_true' ]
 
     fieldsets = (
         ('Общее', {
-            'fields': ('title', 'description', 'image', 'user'),
+            'fields': ('title', 'description', 'get_html_image', 'user'),
         }),
         ('Финансы', {
             'fields': ('price', 'negotiable'),
